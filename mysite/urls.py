@@ -17,7 +17,8 @@ Including another URLconf
 from django.conf import settings
 from django.conf.urls import include, url
 from django.contrib import admin
-from music import urls
+from music import urls as music_urls
+from blog import urls as blog_urls
 from . import views
 
 
@@ -32,5 +33,6 @@ urlpatterns = [
     url(r'^contact/$', views.contact),
     url(r'^listbook/$', views.display_book),
     url(r'^publisher/$', views.PublisherList.as_view()),
-    url(r'^music/', include(urls, namespace='music')),
+    url(r'^music/$', include(music_urls, namespace='music')),
+    url(r'^blog/$', include(blog_urls, namespace='blog')),
 ]
