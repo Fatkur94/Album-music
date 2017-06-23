@@ -33,6 +33,8 @@ urlpatterns = [
     url(r'^contact/$', views.contact),
     url(r'^listbook/$', views.display_book),
     url(r'^publisher/$', views.PublisherList.as_view()),
-    url(r'^music/$', include(music_urls, namespace='music')),
-    url(r'^blog/$', include(blog_urls, namespace='blog')),
+    #dont include $ if not adding url again
+    #like /music/list etc
+    url(r'^music/', include(music_urls, namespace='music')),
+    url(r'^blog/', include(blog_urls, namespace='blog')),
 ]

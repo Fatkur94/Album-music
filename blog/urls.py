@@ -1,8 +1,9 @@
 from django.conf.urls import url
-from .views import *
+from . import views
 
 app_name='blog'
 
 urlpatterns = [
-	url(r'^$', post_list, name='post_list'),
+	url(r'^$', views.post_list, name='post_list'),
+	url(r'^post/(?P<post_pk>\d+)/$',	views.post_detail,	name='post_detail'),
 ]
