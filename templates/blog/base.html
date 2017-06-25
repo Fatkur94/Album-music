@@ -10,15 +10,19 @@
  </head>
  
  <body>
-        <div>
-            <h1><a href="">Django Girls Blog</a></h1>
-        </div>
-        <br/>
-
-        <div>
-            {% block content %}
-            {% endblock %}
-        </div>
+    <div>
+      
+      <h1><a href="{% url 'blog:post_list' %}">Django Girls Blog</a></h1>
+      
+    </div>
+    <br/>
+    {% if user.is_authenticated %}
+    <a class='button' href="{% url 'blog:post_create' %}"> Create Post</a>
+    {% endif%}
+    <div>
+      {% block content %}
+      {% endblock %}
+    </div>
 
     <script src="{% static 'js/foundation.min.js' %}"></script>
    </body>
