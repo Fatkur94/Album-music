@@ -8,7 +8,7 @@
 		<h3><a href="{% url 'blog:post_detail' post.pk %}">{{post.title}}</a></h1>
 		<p>published by: {{ post.published_date }}</p>
 		<p>{{post.author}}</p>
-		<p>{{post.text|linebreaksbr }}</p>
+		<p>{{post.text|linebreaksbr|truncatechars:200 }}</p>
 	{% endfor %}
 
 {% endblock%}
