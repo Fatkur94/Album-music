@@ -3,10 +3,10 @@
 
 {% block content %}
 
-	{% for post in posts %}
-	<h4><a href='{% url "blog:post_detail" post.pk %}'>{{ post.title }}</a></h4>
-	<p>created: {{ post.created_date|date:'d-m-Y'}}</p>
-	<p>{{ post.text|truncatechars:200 }}</p>
-	{% endfor %}
+{% for post in posts %}
+<h3><a href="{% url 'blog:post_detail' post.pk %}">{{ post.title}}</a></h3>
+<p>{{ post.create_date }}</p>
+<p>{{ post.text|linebreaks|truncatechars:200 }}</p>
+{% endfor %}
 
 {% endblock %}

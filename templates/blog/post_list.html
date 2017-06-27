@@ -1,14 +1,14 @@
 {% extends 'blog/base.html' %}
-
+{% load staticfiles %}
 
 {% block content %}
-	
-	{% for post in posts %}
-		
-		<h3><a href="{% url 'blog:post_detail' post.pk %}">{{post.title}}</a></h1>
-		<p>published by: {{ post.published_date }}</p>
-		<p>{{post.author}}</p>
-		<p>{{post.text|linebreaksbr|truncatechars:200 }}</p>
-	{% endfor %}
 
-{% endblock%}
+
+{% for post in posts %}
+	<h4><a href="{% url 'blog:post_detail' post.pk %}">{{ post.title }}</a></h4>
+	<p>published: {{ post.published_date }}</p>
+	<p>{{ post.text|linebreaks|truncatechars:200 }}</p>
+{% endfor %}
+
+{% endblock %}
+
