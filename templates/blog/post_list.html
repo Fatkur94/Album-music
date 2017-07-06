@@ -11,10 +11,30 @@
 	<p class="help-text">published: {{ post.published_date }}</p>
 
 	<p>{{ post.text|linebreaks|truncatechars:200 }}</p>
+	<a class="hollow button warning" href="{% url 'blog:post_detail' post.pk %}">Read More</a>
 
-
- </div>
+</div>
 {% endfor %}
+
+
+<div class="pagination text-center" role='navigation'>
+    <ul class="step-links">
+        {% if posts.has_previous %}
+            <li><span class="warning label"><a href="?page={{ posts.previous_page_number }}">Previous</a></span></li>
+        {% else %}
+        	<li class="disabled">Previous</li>
+        {% endif %}
+
+        
+        {% if posts.has_next %}
+            <li><span class="warning label"><a href="?page={{ posts.next_page_number }}">Next</a></span></li>
+
+        {% else %}
+        	<li class="disabled">Next</li>
+        {% endif %}
+            <li> Page {{ posts.number }} of {{ posts.paginator.num_pages }}.</li>
+    </ul>
+</div>
 
 {% endblock %}
 
