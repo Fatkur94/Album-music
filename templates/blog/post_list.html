@@ -5,9 +5,15 @@
 
 
 {% for post in posts %}
+ <div class="callout">
+
 	<h4><a href="{% url 'blog:post_detail' post.pk %}">{{ post.title }}</a></h4>
-	<p>published: {{ post.published_date }}</p>
+	<p class="help-text">published: {{ post.published_date }}</p>
+
 	<p>{{ post.text|linebreaks|truncatechars:200 }}</p>
+
+
+ </div>
 {% endfor %}
 
 {% endblock %}

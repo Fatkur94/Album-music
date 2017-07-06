@@ -3,15 +3,28 @@
 
 {% block content %}
 
-<h3>{{ post.title }}</h3>
-{% if post.published_date %}
-	<p>{{ post.published_date }}</p>
-{% else %}
-	<a href="{% url 'blog:post_publish' post.pk %}">publish</a>
+<div class="callout">
+
+<div class="columns medium-9">
+	<h3>{{ post.title }}</h3>
+	 {% if post.published_date %}
+		<p class="help-text">{{ post.published_date }}</p>
+	 {% else %}
+		<a href="{% url 'blog:post_publish' post.pk %}">publish</a>
+	 {% endif %}
+</div>
+
+<div class="columns medium-3 ">
+{% if user.is_authenticated %}
+	<a class="hollow button warning float-right" href="{% url 'blog:post_edit' post.pk %}">Edit</a>
+	<a class="hollow button warning float-right" href="{% url 'blog:post_delete' post.pk %}">Delete</a>
 {% endif %}
-<p>{{ post.text }}</p>
-<a class='fi-page-edit' href="{% url 'blog:post_edit' post.pk %}"></a>
-<button class="hollow button warning"><a class='fi-page-delete' href="{% url 'blog:post_delete' post.pk %}"></a></button>
-<i class="fi-page-delete"></i>
+</div>
+<hr>
+	<p>{{ post.text }}</p>
+	
+	
+
+</div>
 
 {% endblock %}
