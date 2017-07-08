@@ -10,6 +10,8 @@ from books.models import *
 def index(request):
 	return HttpResponse('wellcome to the %s' % request.path)
 
+def home(request):
+	return render(request, 'blog/home.html', {})
 
 #version 1
 #def display_good1(request):

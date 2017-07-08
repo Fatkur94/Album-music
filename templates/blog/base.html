@@ -1,51 +1,45 @@
-<html>
- 
+<!doctype html>
+<html class="no-js" lang="en" dir="ltr">
  {% load staticfiles %}
 
  <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'css/foundation.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/foundation.css' %}">
+    <link rel="stylesheet" href="{% static 'css/app.css' %}">
     <link rel='stylesheet' href="{% static 'css/icons/foundation-icons.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/blog.css' %}">
-  <title> blog Post</title>
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
+
+
+
+  <title> Wellcome | Aulia</title>
  </head>
  
  <body>
 
-    <div class="row">
-    <div class="columns medium-text-center">
-      
-      <h1><a href="{% url 'blog:post_list' %}">Aulia Blog</a></h1>
-    
-    </div>
-    </div>
-    <br/>
-    <div class="row">
-    <div class="columns medium-text-center">
-    {% if user.is_authenticated %}
-      <a class='hollow button warning' href="{% url 'blog:post_create' %}">create post</a>
-      <a class='hollow button warning' href='{% url "blog:post_draft" %}'>draft</a>
-      <p>Hello {{ user.username }} <small>(<a href="{% url 'logout' %}">Log out</a>)</small></p>
-    {% else %}
-      <a class="hollow butoon warning" href="{% url 'login' %}">login</a>
-    {% endif %}
-    </div>
-    </div>
+  {% include 'blog/topbar.html' %}
 
-    <div class="row">
-    <div class="columns small-12 medium-8 ">
+
+    <!-- CONTENT -->
+
    {% block content %}
    {% endblock %}
-   </div>
 
-   <div class="columns medium-4">
-   {% include 'blog/sidebar.html'%}
-   
-   </div>
-   </div>
+   <!-- FOOTER -->
+   {% include 'blog/footer.html'%}
 
-    <script src="{% static 'js/foundation.min.js' %}"></script>
+
+
+     <script>
+    $(document).foundation();
+     </script>
+
+    <script src="{% static 'js/vendor/jquery.js' %}"></script>
+    <script src="{% static 'js/vendor/what-input.js' %}"></script>
+    <script src="{% static 'js/vendor/foundation.js' %}"></script>
+    <script src="{% static 'js/vendor/foundation.min.js' %}"></script>
+    <script src="{% static 'js/app.js' %}"></script>
    </body>
 </html>

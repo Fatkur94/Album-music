@@ -3,9 +3,31 @@
 
 {% block content %}
 
+    <!--  HEADER -->
+    <div class="row">
+    <div class="columns medium-text-center">
+      
+      <h1><a href="{% url 'blog:post_list' %}">Aulia Blog</a></h1>
+    
+    </div>
+    </div>
+    <br/>
+    <div class="row">
+    <div class="columns medium-text-center">
+    {% if user.is_authenticated %}
+      <a class='hollow button warning' href="{% url 'blog:post_create' %}">create post</a>
+      <a class='hollow button warning' href='{% url "blog:post_draft" %}'>draft</a>
+      <h1>Hello {{ user.username }} <small>(<a href="{% url 'logout' %}">Log out</a>)</small></h1>
+    {% else %}
+      <a class="button warning" href="{% url 'login' %}">login</a>
+    {% endif %}
+    </div>
 
+
+
+ <div class="columns small-12 medium-8 ">
 {% for post in posts %}
- <div class="callout">
+    <div class="callout">
 
 	<h4><a href="{% url 'blog:post_detail' post.pk %}">{{ post.title }}</a></h4>
 	<p class="help-text">published: {{ post.published_date }}</p>
@@ -13,11 +35,11 @@
 	<p>{{ post.text|linebreaks|truncatechars:200 }}</p>
 	<a class="hollow button warning" href="{% url 'blog:post_detail' post.pk %}">Read More</a>
 
-</div>
+    </div>
 {% endfor %}
 
 
-<div class="pagination text-center" role='navigation'>
+    <div class="pagination text-center" role='navigation'>
     <ul class="step-links">
         {% if posts.has_previous %}
             <li><span class="warning label"><a href="?page={{ posts.previous_page_number }}">Previous</a></span></li>
@@ -27,14 +49,21 @@
 
         
         {% if posts.has_next %}
-            <li><span class="warning label"><a href="?page={{ posts.next_page_number }}">Next</a></span></li>
+            <li><span class="warning label"><a href="?page={{ posts.next_page_number }}">Next</a></span>e</li>
 
         {% else %}
         	<li class="disabled">Next</li>
         {% endif %}
             <li> Page {{ posts.number }} of {{ posts.paginator.num_pages }}.</li>
     </ul>
-</div>
+    </div>
+ </div>
+ <div class="columns medium-4">
+    <!-- SIDEBAR -->
+   {% include 'blog/sidebar.html'%}
+ </div>
+ </div>
+
 
 {% endblock %}
 

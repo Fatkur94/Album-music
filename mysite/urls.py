@@ -29,6 +29,7 @@ urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^accounts/login/$', views.login, name='login'),
     url(r'^accounts/logout/$', views.logout, name='logout', kwargs={'next_page': '/'}),
+    url(r'^$', view.home, name='home'),
     url(r'^path/$', view.index),
     url(r'^user/$', view.display_good2),
     url(r'^meta/$', view.display_meta),
@@ -40,6 +41,6 @@ urlpatterns = [
     #dont include $  in /music if not adding url again
     #like /music/list etc
     url(r'^music/', include(music_urls, namespace='music')),
-    url(r'', include(blog_urls, namespace='blog')),
+    url(r'^blog/', include(blog_urls, namespace='blog')),
     
 ]
