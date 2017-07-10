@@ -4,6 +4,7 @@
 {% block content %}
 
     <!--  HEADER -->
+<section class="main">
     <div class="row">
     <div class="columns medium-text-center">
       
@@ -13,15 +14,7 @@
     </div>
     <br/>
     <div class="row">
-    <div class="columns medium-text-center">
-    {% if user.is_authenticated %}
-      <a class='hollow button warning' href="{% url 'blog:post_create' %}">create post</a>
-      <a class='hollow button warning' href='{% url "blog:post_draft" %}'>draft</a>
-      <h1>Hello {{ user.username }} <small>(<a href="{% url 'logout' %}">Log out</a>)</small></h1>
-    {% else %}
-      <a class="button warning" href="{% url 'login' %}">login</a>
-    {% endif %}
-    </div>
+
 
 
 
@@ -33,7 +26,7 @@
 	<p class="help-text">published: {{ post.published_date }}</p>
 
 	<p>{{ post.text|linebreaks|truncatechars:200 }}</p>
-	<a class="hollow button warning" href="{% url 'blog:post_detail' post.pk %}">Read More</a>
+	<a class="hollow button alert" href="{% url 'blog:post_detail' post.pk %}">Read More</a>
 
     </div>
 {% endfor %}
@@ -42,14 +35,14 @@
     <div class="pagination text-center" role='navigation'>
     <ul class="step-links">
         {% if posts.has_previous %}
-            <li><span class="warning label"><a href="?page={{ posts.previous_page_number }}">Previous</a></span></li>
+            <li><span class="warning label"><a href="?page={{ posts.previous_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">Previous</a></span></li>
         {% else %}
         	<li class="disabled">Previous</li>
         {% endif %}
 
         
         {% if posts.has_next %}
-            <li><span class="warning label"><a href="?page={{ posts.next_page_number }}">Next</a></span>e</li>
+            <li><span class="warning label"><a href="?page={{ posts.next_page_number }}{% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">Next</a></span></li>
 
         {% else %}
         	<li class="disabled">Next</li>
@@ -64,6 +57,41 @@
  </div>
  </div>
 
+</section>
+
+<!-- footer blog -->
+<footer>
+    <div class="wrap row small-up-1 medium-up-3">
+        <div class="column">
+         <h4>Contact Info</h4>
+         <hr>
+         <a href="#"><span>Phone</span> 142 132 4321231</a>
+         <a href=""><span>Email</span> gushoki@gmail.com</a>
+         <a href=""><span>Email</span> 123 bakerstree 212</a>
+        </div>
+        <div class="column">
+         <h4>Site Map</h4>
+         <hr>
+         <a href="">About Me</a>
+         <a href="">Services</a>
+         <a href="">Contact Me</a>
+        </div>
+        <div class="column">
+        <h4>Social Media</h4>
+         <hr>
+         <a href="">Facebook</a>
+         <a href="">Instagram</a>
+         <a href="">Twitter</a>
+        </div>
+    </div>
+    <hr>
+    <div class="wrap row small-up-1 medium-up-1">
+        <div class="column text-center">
+        <p>2017-Fatkurblog.com All Right Reversed Designed & Developed by <a href=''>Fatkur94</a></p>
+        </div>
+    </div>
+
+</footer>
 
 {% endblock %}
 

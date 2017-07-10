@@ -2,10 +2,11 @@
 {% load staticfiles %}
 
 {% block content %}
-
-<form action="" method="POST">{% csrf_token %}
+<div class="row">
+<form action="" method="POST" enctype="multipart/form-data">{% csrf_token %}
 {{ form.as_p }}
-<button type="submit"> Save </button>
+<button  class="button alert hollow" type="submit"> Save </button>
 </form>
+</div>
 
 {% endblock %}
