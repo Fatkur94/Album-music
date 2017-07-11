@@ -1,6 +1,8 @@
 from django.db import models
 from django.conf import settings
 from django.utils import timezone
+#from ckeditor.fields import RichTextField
+from ckeditor_uploader.fields import RichTextUploadingField
 # Create your models here.
 
 def image_location(instance, filename):
@@ -15,7 +17,7 @@ class Post(models.Model):
 			width_field='width_field')
 	height_field = models.IntegerField(default=0)
 	width_field = models.IntegerField(default=0)
-	text = models.TextField()
+	text = RichTextUploadingField('text')
 	created_date = models.DateTimeField(default=timezone.now)
 	published_date = models.DateTimeField(blank=True, null=True)
 

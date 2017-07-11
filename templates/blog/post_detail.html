@@ -45,7 +45,7 @@
 		{% if post.image %}
 		<img src='{{ post.image.url }}'>
 		{% endif %}
-		<p>{{ post.text }}</p>
+		<p>{{ post.text|safe }}</p>
 		<p>Author: <span class="help-text">{{ post.author.get_full_name }}</span></p>
 	</div>
 

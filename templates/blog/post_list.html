@@ -25,7 +25,7 @@
 	<h4><a href="{% url 'blog:post_detail' post.pk %}">{{ post.title }}</a></h4>
 	<p class="help-text">published: {{ post.published_date }}</p>
 
-	<p>{{ post.text|linebreaks|truncatechars:200 }}</p>
+	<p>{{ post.text|truncatechars:200|safe }}</p>
 	<a class="hollow button alert" href="{% url 'blog:post_detail' post.pk %}">Read More</a>
 
     </div>

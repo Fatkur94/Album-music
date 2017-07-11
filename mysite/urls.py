@@ -43,10 +43,10 @@ urlpatterns = [
     #like /music/list etc
     url(r'^music/', include(music_urls, namespace='music')),
     url(r'^blog/', include(blog_urls, namespace='blog')),
-    
+     url(r'^ckeditor/', include('ckeditor_uploader.urls')),   
 ]
 
 
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) 

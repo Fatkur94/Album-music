@@ -27,7 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
+SITE_ID = 1
 # Application definition
 
 INSTALLED_APPS = (
@@ -37,9 +37,13 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
     'books',
     'music',
     'blog',
+    'ckeditor',
+    'ckeditor_uploader',
+    #'pagedown',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -120,3 +124,14 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'mediaroot')
 
 LOGIN_REDIRECT_URL = '/'
+
+
+CKEDITOR_UPLOAD_PATH = 'uploads/'
+
+X_FRAME_OPTIONS = 'SAMEORIGIN'
+# config ckeditor
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': None,
+    }
+}

@@ -1,9 +1,14 @@
 {% extends 'blog/base.html' %}
 {% load staticfiles %}
 
+{% block head_extra %}
+{{ form.media }}
+{% endblock %}
+
 {% block content %}
 <div class="row">
 <form action="" method="POST" enctype="multipart/form-data">{% csrf_token %}
+
 {{ form.as_p }}
 <button  class="button alert hollow" type="submit"> Save </button>
 </form>

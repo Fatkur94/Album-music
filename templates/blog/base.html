@@ -8,13 +8,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'css/foundation.css' %}">
     <link rel="stylesheet" href="{% static 'css/app.css' %}">
-    <link rel='stylesheet' href="{% static 'css/icons/foundation-icons.css' %}">
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
 
 
 
   <title> Wellcome | Aulia</title>
+  {% block head_extra%}
+  {% endblock %}
  </head>
  
  <body>
@@ -33,6 +34,10 @@
      <script>
     $(document).foundation();
      </script>
+
+     <!-- ckeditor -->
+     <script type="text/javascript" src="{% static 'ckeditor/ckeditor-init.js' %}"></script>
+      <script type="text/javascript" src="{% static 'ckeditor/ckeditor/ckeditor.js' %}"></script>
 
     <script src="{% static 'js/vendor/jquery.js' %}"></script>
     <script src="{% static 'js/vendor/what-input.js' %}"></script>
