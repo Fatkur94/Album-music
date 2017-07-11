@@ -8,6 +8,13 @@ from ckeditor_uploader.fields import RichTextUploadingField
 def image_location(instance, filename):
 	return 'user_%s/%s' %(instance, filename)
 
+
+class Category(models.Model):
+	name = models.CharField(max_length=30)
+
+	def __str__(self):
+		return self.name
+
 class Post(models.Model):
 	author = models.ForeignKey(settings.AUTH_USER_MODEL, default=1)
 	title = models.CharField(max_length=50)
@@ -20,6 +27,7 @@ class Post(models.Model):
 	text = RichTextUploadingField('text')
 	created_date = models.DateTimeField(default=timezone.now)
 	published_date = models.DateTimeField(blank=True, null=True)
+	category = models.ForeignKey(Category, verbose_name='Category', null=True, blank=True)
 
 	def publish(self):
 		self.published_date= timezone.now()
@@ -27,3 +35,4 @@ class Post(models.Model):
 
 	def __str__(self):
 		return self.title
+

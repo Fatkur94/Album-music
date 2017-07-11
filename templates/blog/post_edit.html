@@ -3,9 +3,13 @@
 
 {% block content %}
 
+<div class="row">
+<div class=" column medium-8 medium-offset-2">
 <form method="POST" enctype="multipart/form-data">{% csrf_token %}
 {{ form.as_p }}
 <input type="submit" name="save" value="Publish" />
 </form>
+</div>
+</div>
 
 {% endblock %}

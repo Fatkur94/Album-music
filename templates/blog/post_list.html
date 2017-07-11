@@ -21,12 +21,15 @@
  <div class="columns small-12 medium-8 ">
 {% for post in posts %}
     <div class="callout">
+    <div class="head-title">
 
 	<h4><a href="{% url 'blog:post_detail' post.pk %}">{{ post.title }}</a></h4>
 	<p class="help-text">published: {{ post.published_date }}</p>
 
 	<p>{{ post.text|truncatechars:200|safe }}</p>
 	<a class="hollow button alert" href="{% url 'blog:post_detail' post.pk %}">Read More</a>
+
+    </div>
 
     </div>
 {% endfor %}
@@ -59,39 +62,7 @@
 
 </section>
 
-<!-- footer blog -->
-<footer>
-    <div class="wrap row small-up-1 medium-up-3">
-        <div class="column">
-         <h4>Contact Info</h4>
-         <hr>
-         <a href="#"><span>Phone</span> 142 132 4321231</a>
-         <a href=""><span>Email</span> gushoki@gmail.com</a>
-         <a href=""><span>Email</span> 123 bakerstree 212</a>
-        </div>
-        <div class="column">
-         <h4>Site Map</h4>
-         <hr>
-         <a href="">About Me</a>
-         <a href="">Services</a>
-         <a href="">Contact Me</a>
-        </div>
-        <div class="column">
-        <h4>Social Media</h4>
-         <hr>
-         <a href="">Facebook</a>
-         <a href="">Instagram</a>
-         <a href="">Twitter</a>
-        </div>
-    </div>
-    <hr>
-    <div class="wrap row small-up-1 medium-up-1">
-        <div class="column text-center">
-        <p>2017-Fatkurblog.com All Right Reversed Designed & Developed by <a href=''>Fatkur94</a></p>
-        </div>
-    </div>
-
-</footer>
+{% include 'blog/footer.html' %}
 
 {% endblock %}
 

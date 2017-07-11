@@ -10,6 +10,8 @@
 <br>
 <div class="row">
 
+	<div class="column medium-9 medium-offset-1">
+
 {% if messages %}
 <ul class="messages">
     {% for message in messages %}
@@ -22,35 +24,36 @@
 </ul>
 {% endif %}
 
-	<div class="columns medium-9">
-		<h3>{{ post.title }}</h3>
-		{% if post.published_date %}
-		<p class="help-text">published:{{ post.published_date }}</p>
-		{% else %}
-		<a href="{% url 'blog:post_publish' post.pk %}" class="hollow button alert">publish</a>
-		{% endif %}
-
-	</div>
-
-	<div class="columns medium-3">
-		{% if user.is_authenticated %}
-		<a class="hollow button warning float-right" href="{% url 'blog:post_edit' post.pk %}">Edit</a>
-		<a class="hollow button warning float-right" href="{% url 'blog:post_delete' post.pk %}">Delete</a>
-		{% endif %}
+		<h3 class="text-center">{{ post.title }}</h3>
 		
-	</div>
+		<div class="columns medium-4">
+			{% if post.published_date %}
+			<p>published:{{ post.published_date }}</p></li>
+			{% else %}
+			<a href="{% url 'blog:post_publish' post.pk %}" class="hollow button alert">publish</a></li>
+			{% endif %}
+		</div>
+		<div class="columns medium-4">
+			<p>Author: <span>{{ post.author.get_full_name }}</span></p></li>
+		</div>
+		<div class="columns medium-4">
+			<a href="{% url 'blog:post_edit' post.pk %}" class="hollow button warning">Edit</a>
+			<a href="{% url 'blog:post_delete' post.pk %}" class="hollow button warning">Delete</a>
+		</div>
+
 		<hr>
 																			
-	<div class="columns medium-12 small-12">
 		{% if post.image %}
 		<img src='{{ post.image.url }}'>
 		{% endif %}
 		<p>{{ post.text|safe }}</p>
-		<p>Author: <span class="help-text">{{ post.author.get_full_name }}</span></p>
+		<h1 class="text-center">{{ post.category }}</h1>
+
+		
 	</div>
 
 </div>
 
-
+{% include 'blog/footer.html' %}
 
 {% endblock %}

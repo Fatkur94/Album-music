@@ -5,9 +5,13 @@ from django.contrib import messages
 from django.db.models import Q
 from django.utils import timezone
 from .forms import PostForm
-from .models import Post
+from .models import Post, Category
 
 # Create your views here.
+
+def category_list(request):
+	categories = Category.objects.all()
+	return render(request, 'blog/category_list.html', {'categories':categories})
 
 
 def post_list(request):

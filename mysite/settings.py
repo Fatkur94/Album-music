@@ -38,9 +38,12 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
+    #local apps
+    'portofolio',
     'books',
     'music',
     'blog',
+    #ThirdParty
     'ckeditor',
     'ckeditor_uploader',
     #'pagedown',

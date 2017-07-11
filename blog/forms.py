@@ -9,5 +9,5 @@ class PostForm(forms.ModelForm):
 	#text = forms.CharField(widget=PagedownWidget())
 	class Meta:
 		model = Post
-		fields = ('title', 'image', 'text')
+		fields = ('title', 'image', 'text', 'category')
 
