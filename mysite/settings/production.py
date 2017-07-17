@@ -49,6 +49,7 @@ INSTALLED_APPS = (
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -112,22 +113,18 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
-
-PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
-
-
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
-    os.path.join(PROJECT_ROOT, "static"),
+    os.path.join(BASE_DIR, "static"),
     #'/var/www/static/',
 ]
 
-STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticroot')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticroot')
 
 MEDIA_URL = '/media/'
 
-MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'mediaroot')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'mediaroot')
 
 LOGIN_REDIRECT_URL = '/'
 
