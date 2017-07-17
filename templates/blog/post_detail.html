@@ -3,56 +3,125 @@
 
 {% block content %}
 
+  <section class="main">
+
+  {% if messages %}
+	<ul class="messages">
+    	{% for message in messages %}
+    	<li {% if message.tags %} class="{{ message.tags }}"{% endif %}>
+    		<div class="callout success">
+    			{{ message }}
+			</div>
+    	</li>
+    	{% endfor %}
+	</ul>
+  {% endif %}
 
 
-<br>
-<br>
-<br>
-<div class="row">
+    <div class="row medium-9 large-8 columns">
+      <div class="blog-post">      
+      	<div class="media-object">
+  		    <div class="media-object-section medium-3 small-6 text-center">
+              <img class="thumbnail" src= "{% static 'img/aulia.jpg' %}" width="80%">
+          </div>
+          <div class="media-object-section medium-9 small-6">
+            <h4>By Aulia Rahma</h4>
+            <hr>
+            <p>I'm going to improvise. Listen, there's something you should know about me... about inception. An idea is like a virus, resilient, highly contagious. The smallest seed of an idea can grow. It can grow to define or destroy you.</p>
+            <ul class="menu">
+              <li><a href="https://www.facebook.com/"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+              <li><a href="https://www.instagram.com/?hl=en"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+              <li><a href="https://www.pinterest.com/"><i class="fa fa-pinterest-p" aria-hidden="true"></i></a></li>
+              <li><a href="https://twitter.com/?lang=en"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <br>
+      <br>
 
-	<div class="column medium-9 medium-offset-1">
-
-{% if messages %}
-<ul class="messages">
-    {% for message in messages %}
-    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
-    <div class="callout success">
-    	{{ message }}
-	</div>
-    </li>
-    {% endfor %}
-</ul>
-{% endif %}
-
-		<h3 class="text-center">{{ post.title }}</h3>
-		
-		<div class="columns medium-4">
-			{% if post.published_date %}
-			<p>published:{{ post.published_date }}</p></li>
-			{% else %}
-			<a href="{% url 'blog:post_publish' post.pk %}" class="hollow button alert">publish</a></li>
-			{% endif %}
-		</div>
-		<div class="columns medium-4">
-			<p>Author: <span>{{ post.author.get_full_name }}</span></p></li>
-		</div>
-		<div class="columns medium-4">
+      <div class="blog-post">
+        <h3 class="post-title">{{ post.title }}</h3>
+         <ul class="menu simple text-center post-meta">
+              <li><a href="#">Author:{{ post.author.get_full_name }}</a></li>
+              <li><a href="#">Comments: 3</a></li>
+              {% if post.published_date %}
+					<li>Published:{{ post.published_date|date:"SHORT_DATE_FORMAT" }}</li>
+			  {% else %}
+					<a href="{% url 'blog:post_publish' post.pk %}" class="hollow button alert">Publish now</a></li>
+			  {% endif %}
+              <li>Category:{{ post.category }}</span></li>
+         </ul>
+         <hr>
+         {% if user.is_authenticated%}
 			<a href="{% url 'blog:post_edit' post.pk %}" class="hollow button warning">Edit</a>
 			<a href="{% url 'blog:post_delete' post.pk %}" class="hollow button warning">Delete</a>
-		</div>
-
-		<hr>
-																			
-		{% if post.image %}
+		 {% endif %}
+        <img src="{% static 'img/django.jpg' %}">
+        {% if post.image %}
 		<img src='{{ post.image.url }}'>
 		{% endif %}
 		<p>{{ post.text|safe }}</p>
-		<h1 class="text-center">{{ post.category }}</h1>
 
-		
-	</div>
+        <hr>
 
-</div>
+        <div class="row align-justify">
+          <div class="columns medium-6 small-6 tags">
+            <span class="alert label"><a href="">tags</a></span>
+            <span class="alert label"><a href="">tags</a></span>
+            <span class="alert label"><a href="">tags</a></span>
+            <span class="alert label"><a href="">tags</a></span>
+            <span class="alert label"><a href="">tags</a></span>
+            <span class="alert label"><a href="">tags</a></span>
+            <span class="alert label"><a href="">tags</a></span>
+            <span class="alert label"><a href="">tags</a></span>                
+          </div>
+        <div class="columns medium-6 small-6 share">
+            <span><a href="">fb</a></span>
+            <span><a href="">twitter</a></span>
+           	<span><a href="">google+</a></span>
+            <span><a href="">linkedin</a></span>
+          </div>
+        </div>
+
+      </div>
+      <br>
+      <div class="blog-post">
+      		<h3 class="text-center">Related Post</h3>
+      	<div class='row small-up-1 medium-up-3 text-center'>
+
+      	 <div class="column column-block">
+      	  <a href=""><img src="{% static 'img/django.jpg' %}">
+      	  <em>This is related post from django</em></a>
+      	</div>
+
+      	<div class="column column-block">
+      	  <a href=""><img src="{% static 'img/django.jpg' %}">
+      	  <em>This is related post from django</em></a>
+      	</div>
+
+      	<div class="column column-block">
+      	  <a href=""><img src="{% static 'img/django.jpg' %}">
+      	  <em>This is related post from django</em></a>
+      	</div>
+
+      	</div>
+
+      </div>
+      <br>
+      <div class="blog-post">
+        <h3>Comment Discus</h3>
+      </div>
+
+    </div>
+
+
+<br>
+<br>
+<br>
+
+
+</section>
 
 {% include 'blog/footer.html' %}
 

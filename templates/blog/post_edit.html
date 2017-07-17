@@ -3,6 +3,7 @@
 
 {% block content %}
 
+<section class="main">
 <div class="row">
 <div class=" column medium-8 medium-offset-2">
 <form method="POST" enctype="multipart/form-data">{% csrf_token %}
@@ -11,5 +12,9 @@
 </form>
 </div>
 </div>
+
+</section>
+
+{% include 'blog/footer.html' %}
 
 {% endblock %}

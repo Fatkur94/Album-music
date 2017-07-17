@@ -1,0 +1,72 @@
+{% extends 'blog/base.html' %}
+
+{% load staticfiles %}
+
+{% block content %}
+
+<section class="main">
+  <div class="row">
+	{% for i in instance %}
+	  <div class="medium-8 columns">
+	    <div class="blog-post">
+	      {% if i.image %}
+			<img src="{{ i.image.url }}" >
+		  {% endif %}
+		  <div class="row align-center">
+		  	<div class="columns medium-6 small-6 text-center">
+		    <a href="{{ i.demo }}" class="button hollow small alert">Demo</a>
+		    </div>
+		    <div class="columns medium-6 small-6 text-center">
+		  	<a href="{{ i.source }}" class="button hollow small alert">Source</a>
+		  	</div>
+		  </div>
+	    </div>
+	    <br>
+	    <br>
+	  </div>
+
+
+	  <div class="medium-4 columns">
+	  	<div class="blog-post">
+	  	  <h3 class="post-title">{{ i.title }}</h3>
+	  	  <hr>
+
+	  	  <ul class="accordion" data-accordion data-allow-all-closed="true">
+  			<li class="accordion-item is-active" data-accordion-item>
+    		  <a class="accordion-title">Description</a>
+    			<div class="accordion-content" data-tab-content>
+      		  		{{ i.description }}
+    			</div>
+  			</li>
+
+  			<li class="accordion-item" data-accordion-item>
+    		  <a class="accordion-title">Category</a>
+    			<div class="accordion-content" data-tab-content>
+      		  		{{ i.category }}
+    			</div>
+  			</li>
+
+  			<li class="accordion-item" data-accordion-item>
+    		  <a class="accordion-title">Technology</a>
+    			<div class="accordion-content" data-tab-content>
+      		  	  <ul>{% for tech in i.technology.all %}
+      		  	    <li>{{ tech }}</li>
+      		      {% endfor %}
+      		      </ul>
+    			</div>
+  			</li>
+  			<!-- ... -->
+	  	  </ul>
+
+		</div>
+		<br>
+		<br>
+	  </div>
+	{% endfor %}
+
+  </div>
+</section>
+
+{% include 'blog/footer.html'%}
+
+{% endblock %}

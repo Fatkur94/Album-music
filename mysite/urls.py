@@ -21,6 +21,7 @@ from django.contrib import admin
 from django.contrib.auth import views
 from music import urls as music_urls
 from blog import urls as blog_urls
+from portofolio import urls as portofolio_urls
 from . import views as view
 #accesing login django
 
@@ -43,7 +44,9 @@ urlpatterns = [
     #like /music/list etc
     url(r'^music/', include(music_urls, namespace='music')),
     url(r'^blog/', include(blog_urls, namespace='blog')),
-     url(r'^ckeditor/', include('ckeditor_uploader.urls')),   
+    url(r'^portofolio/', include(portofolio_urls, namespace='portofolio')),
+    #thirdparty
+    url(r'^ckeditor/', include('ckeditor_uploader.urls')),   
 ]
 
 

@@ -3,6 +3,7 @@
 
 {% block content %}
 
+<section class="main">
 <div class="row">
 <div class="columns medium-7 medium-offset-2">
 {% for post in posts %}
@@ -12,5 +13,8 @@
 {% endfor %}
 </div>
 </div>
+</section>
+
+{% include 'blog/footer.html' %}
 
 {% endblock %}

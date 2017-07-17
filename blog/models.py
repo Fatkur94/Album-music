@@ -6,7 +6,7 @@ from ckeditor_uploader.fields import RichTextUploadingField
 # Create your models here.
 
 def image_location(instance, filename):
-	return 'user_%s/%s' %(instance, filename)
+	return 'blog/%s/%s' %(instance.id, filename)
 
 
 class Category(models.Model):

@@ -1,14 +1,43 @@
-<div class="callout hide-for-small-only">
+
+
+<div class="blog-post">
 <form method="GET" action="">
 	<input type="text" name="q" placeholder="Search posts" value="{{ requset.GET.q }}" />
 	<input type="submit" class="hollow button alert" Value="Search"/>
 
 </form>
 </div>
+<br>
 
-<div class="callout hide-for-small-only">
-<h1>Side Bar</h1>
+<div class="blog-post">
+<h4>About Me</h4>
 <hr>
    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duo enim genera quae erant, fecit tria. Iam quae corporis sunt, ea nec auctoritatem cum animi partibus, comparandam et cognitionem habent faciliorem. In schola desinis. Memini vero, inquam; Magna laus. Satis est ad hoc responsum. Duo Reges: constructio interrete. Positum est a nostris in iis esse rebus, quae secundum naturam essent, non dolere; Tum Piso: Quoniam igitur aliquid omnes</p>
 </div>
+<br>
 
+<div class="blog-post">
+
+
+<h4>Categories</h4>
+<hr>
+    <ul>
+    {% for cat in categories %}
+    <li><a href="#">{{ cat }}</a></li>
+    {% endfor %}
+    </ul>
+
+
+</div>
+<br>
+
+<div class="blog-post">
+<h4>Authors</h4>
+<hr>
+    <ul>
+    <li><a href="#">Skyler</a></li>
+    <li><a href="#">Jesse</a></li>
+   	<li><a href="#">Mike</a></li>
+    <li><a href="#">Holly</a></li>
+    </ul>
+</div>

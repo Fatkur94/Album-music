@@ -16,6 +16,7 @@ def category_list(request):
 
 def post_list(request):
 	posts_list = Post.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
+	categories = Category.objects.all()
 	query = request.GET.get('q')
 	if query:
 		posts_list = posts_list.filter(
@@ -35,8 +36,12 @@ def post_list(request):
 		# If page is out of range (e.g. 9999), deliver last page of results.
 		posts = paginator.page(paginator.num_pages)
 
+	context = {
+			'posts':posts,
+			'categories':categories,
+	}
 
-	return render(request, 'blog/post_list.html', {'posts':posts})
+	return render(request, 'blog/post_list.html', context)
 
 
 def post_detail(request, pk):
