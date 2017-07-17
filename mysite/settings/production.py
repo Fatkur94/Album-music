@@ -25,9 +25,9 @@ SECRET_KEY = '7@c=9+fwyx22e0n!cyd%_@ko6mpm-7m)m7r_$3pb@51jo#dy6y'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['fatkurblog.herokuapp.com', 'https://fatkurblog.herokuapp.com' ]
 
-SITE_ID = 1
+SITE_ID = 2
 # Application definition
 
 INSTALLED_APPS = (
@@ -112,18 +112,22 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
+
+PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
+
+
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static"),
+    os.path.join(PROJECT_ROOT, "static"),
     #'/var/www/static/',
 ]
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticroot')
+STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticroot')
 
 MEDIA_URL = '/media/'
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'mediaroot')
+MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'mediaroot')
 
 LOGIN_REDIRECT_URL = '/'
 
