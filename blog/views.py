@@ -9,6 +9,9 @@ from .models import Post, Category
 
 # Create your views here.
 
+def home(request):
+	return render(request, 'blog/home.html', {})
+
 def category_list(request):
 	categories = Category.objects.all()
 	return render(request, 'blog/category_list.html', {'categories':categories})

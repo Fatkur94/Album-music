@@ -40,8 +40,6 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     #local apps
     'portofolio',
-    'books',
-    'music',
     'blog',
     #ThirdParty
     'ckeditor',
@@ -86,15 +84,16 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'django',
-        'USER': 'root',
-        'PASSWORD': '',
+        'USER': 'postgres',
+        'PASSWORD': 'root',
         'HOST': 'localhost',
-        'PORT': '',
+        'PORT': '5432',
     }
 }
 
+#postgres
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
