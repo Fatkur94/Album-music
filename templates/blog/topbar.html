@@ -1,19 +1,19 @@
 
 <!-- Start of body below -->
 
-
-<div class="responsive-nav-social-mobile " data-responsive-toggle="responsive-nav-social" data-hide-for="medium">
-  <div class="responsive-nav-social-mobile-left">
+<div class="sticky is-stuck" style="width: 100%">
+<div class=" responsive-nav-social-mobile" data-responsive-toggle="responsive-nav-social" data-hide-for="medium">
+  <div class="responsive-nav-social-mobile-left ">
     <ul class="menu">
       {% if user.is_authenticated %}
           <li><a href="{% url 'logout' %}"><i class="fa fa-sign-out" aria-hidden="true"></i></a></li>
           {% else %}
           <li><a href="{% url 'login' %}"><i class="fa fa-sign-in" aria-hidden="true"></i></a></li>
           {% endif %}
-      <li><a href="https://www.facebook.com/"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+      <li><a href="https://web.facebook.com/Rochmancules"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
       <li><a href="https://www.instagram.com/?hl=en"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
       <li><a href="https://www.pinterest.com/"><i class="fa fa-pinterest-p" aria-hidden="true"></i></a></li>
-      <li><a href="https://twitter.com/?lang=en"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+      <li><a href="https://twitter.com/fatkur_94"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
     </ul>
   </div>
   <div class="responsive-nav-social-mobile-right">
@@ -23,12 +23,13 @@
 
 
 
+
+
 <div data-sticky-container>
-  <div class="responsive-nav-social top-bar" id="responsive-nav-social" data-sticky data-options="marginTop:0; stickyOn: small;">
+  <div class="responsive-nav-social top-bar" id="responsive-nav-social" data-sticky data-options="marginTop:0;">
     <div class="row align-justify align-middle" id="responsive-menu">
-      <div class="responsive-nav-social-left top-bar-left">
+      <div class="top-bar-left">
         <ul class="menu vertical medium-horizontal menu-hover-lines">
-          <!-- <li><a href="#"><strong></strong></a></li> -->
           <li><a href="{% url 'home' %}"><strong>HOME</strong></a></li>
           <li><a href="{% url 'blog:post_list' %}"><strong>BLOG</strong></a></li>
           <li><a href="{% url 'portofolio:portofolio_list' %}"><strong>PORTOFOLIO</strong></a></li>
@@ -43,10 +44,10 @@
       </div>
       <div class="responsive-nav-social-right top-bar-right hide-for-small-only">
         <ul class="menu">
-          <li><a href="https://www.facebook.com/"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+          <li><a href="https://web.facebook.com/Rochmancules"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
           <li><a href="https://www.instagram.com/?hl=en"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
           <li><a href="https://www.pinterest.com/"><i class="fa fa-pinterest-p" aria-hidden="true"></i></a></li>
-          <li><a href="https://twitter.com/?lang=en"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+          <li><a href="https://twitter.com/fatkur_94"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
           {% if user.is_authenticated %}
           <li><a href="{% url 'logout' %}"><i class="fa fa-sign-out" aria-hidden="true"></i></a></li>
           {% else %}
@@ -57,4 +58,5 @@
     </div>
   </div>
 </div>
+
 </div>
