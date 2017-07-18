@@ -9,9 +9,10 @@
 	{% for i in instance %}
 	  <div class="medium-8 columns">
 	    <div class="blog-post">
-	      {% if i.image %}
-			<img src="{{ i.image.url }}" >
-		  {% endif %}
+
+	    	<!-- heroku cant serve media :/ -->
+			<img src="{{% static 'img/django.jpg' %}" >
+
 		  <div class="row align-center">
 		  	<div class="columns medium-6 small-6 text-center">
 		    <a href="{{ i.demo }}" class="button hollow small alert">Demo</a>
