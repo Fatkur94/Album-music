@@ -7,7 +7,15 @@
 <section class="main">
 
     <div class="row" id="content">
+      <div class="row column text-center">
+        <div class="column-block">
+        <img src="{% static 'img/fatkurblog.png'%}" class='logo hide-for-small-only' width="50%">
+        <img src="{% static 'img/fatkurblog.png'%}" class='small-logo show-for-small-only' width="100%">
+        </div>
+      </div>
+
       <div class="medium-8 columns">
+
       {% for post in posts %}
         <div class="blog-post">
           <h3 class="post-title"><a href="{% url 'blog:post_detail' post.pk %}">{{ post.title }}</a></h3>
